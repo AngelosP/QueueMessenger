@@ -10,15 +10,6 @@
     "secrets1": {
       "type": "secrets.user"
     },
-    "rabbitmq1": {
-      "containerPorts": "5672:5672,15672:15672",
-      "secretStore": "LocalSecretsFile",
-      "containerName": "rabbitmq",
-      "containerImage": "rabbitmq:3-management-alpine",
-      "resourceId": null,
-      "type": "rabbitmq.container",
-      "connectionId": "RabbitMQConnectionString"
-    },
     "cosmosdb1": {
       "containerPorts": "8081:8081,10251:10251,10252:10252,10253:10253,10254:10254",
       "secretStore": "LocalSecretsFile",
@@ -32,6 +23,15 @@
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.SignalRService/SignalR/vramakSignalRService",
       "type": "signalr.function",
       "connectionId": "AzureSignalRConnectionString"
+    },
+    "rabbitmq1": {
+      "containerPorts": "5672:5672,15672:15672",
+      "secretStore": "LocalSecretsFile",
+      "containerName": "rabbitmq",
+      "containerImage": "rabbitmq:3-management-alpine",
+      "resourceId": null,
+      "type": "rabbitmq.container",
+      "connectionId": "RabbitMQConnectionString"
     }
   }
 }

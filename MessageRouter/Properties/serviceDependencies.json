@@ -10,10 +10,6 @@
     "secrets1": {
       "type": "secrets"
     },
-    "rabbitmq1": {
-      "type": "rabbitmq",
-      "connectionId": "RabbitMQConnectionString"
-    },
     "cosmosdb1": {
       "type": "cosmosdb",
       "connectionId": "CosmosDBConnectionString"
@@ -21,6 +17,10 @@
     "signalr1": {
       "type": "signalr",
       "connectionId": "AzureSignalRConnectionString"
+    },
+    "rabbitmq1": {
+      "type": "rabbitmq",
+      "connectionId": "RabbitMQConnectionString"
     }
   }
 }
