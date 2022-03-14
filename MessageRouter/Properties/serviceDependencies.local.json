@@ -1,28 +1,22 @@
 {
   "dependencies": {
-    "appInsights1": {
-      "type": "appInsights.sdk"
-    },
-    "storage1": {
-      "type": "storage.emulator",
-      "connectionId": "AzureWebJobsStorage"
-    },
     "secrets1": {
       "type": "secrets.user"
+    },
+    "appInsights1": {
+      "secretStore": null,
+      "resourceId": null,
+      "type": "appInsights.sdk",
+      "connectionId": null
     },
     "cosmosdb1": {
       "containerPorts": "8081:8081,10251:10251,10252:10252,10253:10253,10254:10254",
       "secretStore": "LocalSecretsFile",
       "containerName": "cosmosdb",
       "containerImage": "mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator",
+      "resourceId": null,
       "type": "cosmosdb.container",
       "connectionId": "CosmosDBConnectionString"
-    },
-    "signalr1": {
-      "secretStore": "LocalSecretsFile",
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.SignalRService/SignalR/vramakSignalRService",
-      "type": "signalr.function",
-      "connectionId": "AzureSignalRConnectionString"
     },
     "rabbitmq1": {
       "containerPorts": "5672:5672,15672:15672",
@@ -32,6 +26,18 @@
       "resourceId": null,
       "type": "rabbitmq.container",
       "connectionId": "RabbitMQConnectionString"
+    },
+    "storage1": {
+      "secretStore": "LocalSecretsFile",
+      "resourceId": null,
+      "type": "storage.emulator",
+      "connectionId": "AzureWebJobsStorage"
+    },
+    "signalr1": {
+      "secretStore": "LocalSecretsFile",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.SignalRService/SignalR/vramakSignalRService",
+      "type": "signalr.function",
+      "connectionId": "AzureSignalRConnectionString"
     }
   }
 }

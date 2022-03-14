@@ -3,20 +3,19 @@
     "secrets1": {
       "type": "secrets"
     },
-    "sqlite1": {
-      "type": "sqlite",
-      "connectionId": "SQLiteConnectionString"
-    },
-    "cosmosdb1": {
-      "type": "cosmosdb",
-      "connectionId": "CosmosDBConnectionString",
-      "dynamicId": null
-    },
     "mssql1": {
       "ignored": "true",
       "suggestion": "true",
       "type": "mssql",
       "connectionId": ""
+    },
+    "cosmosdb1": {
+      "type": "cosmosdb",
+      "connectionId": "CosmosDBConnectionString"
+    },
+    "sqlite1": {
+      "type": "sqlite",
+      "connectionId": "SQLiteConnectionString"
     }
   }
 }
