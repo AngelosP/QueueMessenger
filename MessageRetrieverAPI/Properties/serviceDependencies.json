@@ -11,6 +11,12 @@
       "type": "cosmosdb",
       "connectionId": "CosmosDBConnectionString",
       "dynamicId": null
+    },
+    "mssql1": {
+      "ignored": "true",
+      "suggestion": "true",
+      "type": "mssql",
+      "connectionId": ""
     }
   }
 }
