@@ -35,7 +35,7 @@
     },
     "signalr1": {
       "secretStore": "LocalSecretsFile",
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.SignalRService/SignalR/vramakSignalRService",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.SignalRService/SignalR/vramakmessagerouter",
       "type": "signalr.function",
       "connectionId": "AzureSignalRConnectionString"
     }

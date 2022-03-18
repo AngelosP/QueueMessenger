@@ -1,9 +1,8 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using MessageRetrieverAPI.Data;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using Microsoft.Azure.Cosmos;
 using System.Net;
+using MessageRetrieverAPI.Data;
+using Microsoft.Azure.Cosmos;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 

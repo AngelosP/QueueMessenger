@@ -13,12 +13,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace FunctionApp156
+namespace MessageRouter
 {
-    public static class MessageDashboard
+    public class MessageDashboard
     {
+        private readonly IConfiguration _configuration;
+
+        public MessageDashboard(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
 
         [FunctionName("index")]
         public static IActionResult Index([HttpTrigger(AuthorizationLevel.Anonymous)] HttpRequest req, ExecutionContext context)
@@ -40,22 +47,24 @@ namespace FunctionApp156
         }
 
         [FunctionName("broadcast")]
-        public static async Task Broadcast(
+        public async Task Broadcast(
             [CosmosDBTrigger("OrderDatabase", "OrderContainer", ConnectionStringSetting = "CosmosDBConnectionString", LeaseCollectionName = "leases", CreateLeaseCollectionIfNotExists =true)]
             IEnumerable<object> updatedResults,
             [SignalR(HubName = "MessageHub")] IAsyncCollector<SignalRMessage> signalRMessages, 
             ILogger logger)
         {
+            string baseAPI = _configuration["WebAPI"] ?? APIConfiguration.WebAPI;
+
             var updatedResult = updatedResults.FirstOrDefault();
             var updatedOrder = JsonSerializer.Deserialize<Order>(updatedResult.ToString(), APIConfiguration.JsonOptions);
             
             if (string.IsNullOrEmpty(updatedOrder.ReviewAssignedTo))
             {
-                await MessageAssignment.AssignOrder(updatedOrder);
+                await MessageAssignment.AssignOrder(updatedOrder, baseAPI);
                 return;
             }
 
-            var request = new HttpRequestMessage(HttpMethod.Get, @$"{APIConfiguration.BaseAPI}/Orders");
+            var request = new HttpRequestMessage(HttpMethod.Get, @$"{baseAPI}/Orders");
             request.Headers.UserAgent.ParseAdd("Serverless");
             var response = await APIConfiguration.HttpClient.SendAsync(request);
             var orderResult = JsonSerializer.Deserialize<Order[]>(await response.Content.ReadAsStringAsync(), APIConfiguration.JsonOptions);

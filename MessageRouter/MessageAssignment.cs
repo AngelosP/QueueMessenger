@@ -5,14 +5,15 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using MessageModels;
 
-namespace FunctionApp156
+namespace MessageRouter
 {
     public static class MessageAssignment
     {
         public static async Task AssignOrder(
-            Order order)
+            Order order, 
+            string baseAPI)
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, @$"{APIConfiguration.BaseAPI}/Employees");
+            var request = new HttpRequestMessage(HttpMethod.Get, @$"{baseAPI}/Employees");
             var response = await APIConfiguration.HttpClient.SendAsync(request);
             var employeeResult = JsonSerializer.Deserialize<Employee[]>(await response.Content.ReadAsStringAsync(), APIConfiguration.JsonOptions);
             // Pick a random employee
@@ -23,7 +24,7 @@ namespace FunctionApp156
                 var selectedEmployee = employeeResult[index];
                 order.ReviewAssignedTo = @$"{selectedEmployee.FirstName} {selectedEmployee.LastName}";
                 string updatedJson = JsonSerializer.Serialize<Order>(order);
-                var employeeUpdateRequest = new HttpRequestMessage(HttpMethod.Put, @$"{APIConfiguration.BaseAPI}/Orders/{order.TrackingId}")
+                var employeeUpdateRequest = new HttpRequestMessage(HttpMethod.Put, @$"{baseAPI}/Orders/{order.TrackingId}")
                 {
                     Content = new StringContent(updatedJson, Encoding.UTF8, "application/json")
                 };
