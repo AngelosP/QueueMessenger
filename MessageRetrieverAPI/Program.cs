@@ -3,6 +3,7 @@ using MessageRetrieverAPI.Data;
 using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 

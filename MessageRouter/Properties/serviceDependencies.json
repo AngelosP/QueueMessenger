@@ -11,13 +11,13 @@
       "type": "cosmosdb",
       "connectionId": "CosmosDBConnectionString"
     },
-    "rabbitmq1": {
-      "type": "rabbitmq",
-      "connectionId": "RabbitMQConnectionString"
-    },
     "storage1": {
       "type": "storage",
       "connectionId": "AzureWebJobsStorage"
+    },
+    "rabbitmq1": {
+      "type": "rabbitmq",
+      "connectionId": "RabbitMQConnectionString"
     },
     "signalr1": {
       "type": "signalr",

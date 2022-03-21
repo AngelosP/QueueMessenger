@@ -36,7 +36,7 @@
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "name": "[concat(parameters('resourceGroupName'), 'Deployment', uniqueString(concat('dashboardsignalr', subscription().subscriptionId)))]",
+      "name": "[concat(parameters('resourceGroupName'), 'Deployment', uniqueString(concat('angelpe-orders-cosmosdb', subscription().subscriptionId)))]",
       "resourceGroup": "[parameters('resourceGroupName')]",
       "apiVersion": "2019-10-01",
       "dependsOn": [
@@ -49,16 +49,17 @@
           "contentVersion": "1.0.0.0",
           "resources": [
             {
-              "sku": {
-                "name": "Free_F1",
-                "tier": "Free",
-                "size": "F1",
-                "capacity": 1
-              },
+              "name": "angelpe-orders-cosmosdb",
               "location": "[parameters('resourceLocation')]",
-              "name": "dashboardsignalr",
-              "type": "Microsoft.SignalRService/SignalR",
-              "apiVersion": "2018-10-01"
+              "type": "Microsoft.DocumentDB/databaseAccounts",
+              "kind": "GlobalDocumentDB",
+              "systemData": {
+                "createdAt": "2022-03-18T19:29:19.5290992Z"
+              },
+              "properties": {
+                "databaseAccountOfferType": "Standard"
+              },
+              "apiVersion": "2015-04-08"
             }
           ]
         }
@@ -66,6 +67,6 @@
     }
   ],
   "metadata": {
-    "_dependencyType": "signalr.function"
+    "_dependencyType": "cosmosdb.azure"
   }
 }

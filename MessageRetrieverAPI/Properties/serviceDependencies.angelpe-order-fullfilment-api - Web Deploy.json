@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "apis1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/angelpe-order-fullfilment-api-service/apis/angelpe-order-fullfilment-api",
+      "type": "apis.azure"
+    },
+    "cosmosdb1": {
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.DocumentDB/databaseAccounts/angelpe-orders-cosmosdb",
+      "type": "cosmosdb.azure",
+      "connectionId": "CosmosDBConnectionString",
+      "dynamicId": null
+    },
+    "secrets1": {
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.KeyVault/vaults/orderfullfilmentkv",
+      "type": "secrets.keyVault",
+      "connectionId": "VaultUri",
+      "dynamicId": null
+    }
+  }
+}

@@ -17,6 +17,10 @@
       "resourceId": null,
       "type": "sqlite.local",
       "connectionId": "SQLiteConnectionString"
+    },
+    "apis1": {
+      "ignored": "true",
+      "type": "apis"
     }
   }
 }

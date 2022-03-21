@@ -1,21 +1,27 @@
 {
   "dependencies": {
-    "secrets1": {
-      "type": "secrets"
-    },
     "mssql1": {
       "ignored": "true",
       "suggestion": "true",
       "type": "mssql",
       "connectionId": ""
     },
-    "cosmosdb1": {
-      "type": "cosmosdb",
-      "connectionId": "CosmosDBConnectionString"
-    },
     "sqlite1": {
       "type": "sqlite",
       "connectionId": "SQLiteConnectionString"
+    },
+    "apis1": {
+      "type": "apis"
+    },
+    "cosmosdb1": {
+      "type": "cosmosdb",
+      "connectionId": "CosmosDBConnectionString",
+      "dynamicId": null
+    },
+    "secrets1": {
+      "type": "secrets",
+      "connectionId": "VaultUri",
+      "dynamicId": null
     }
   }
 }
