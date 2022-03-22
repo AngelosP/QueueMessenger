@@ -10,18 +10,13 @@
       "type": "sqlite",
       "connectionId": "SQLiteConnectionString"
     },
-    "apis1": {
-      "type": "apis"
+    "secrets1": {
+      "type": "secrets",
+      "dynamicId": null
     },
     "cosmosdb1": {
       "type": "cosmosdb",
-      "connectionId": "CosmosDBConnectionString",
-      "dynamicId": null
-    },
-    "secrets1": {
-      "type": "secrets",
-      "connectionId": "VaultUri",
-      "dynamicId": null
+      "connectionId": "CosmosDBConnectionString"
     }
   }
 }

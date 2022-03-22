@@ -77,7 +77,7 @@ namespace MessageRouter
                     Target = "newMessage",
                     Arguments = new[]
                     {
-                        HttpUtility.HtmlEncode(generatedMessage).Replace(Environment.NewLine, "<br/>")
+                        generatedMessage.Replace(Environment.NewLine, "<br/>")
                     }
                 });
         }
@@ -85,18 +85,21 @@ namespace MessageRouter
         private static string GenerateMessage(IEnumerable<Order> orderResults, Order updatedOrder)
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("All Work items:");
+            sb.AppendLine("<h2>All messages</h2>");
             foreach (var order in orderResults)
             {
-                sb.AppendLine($"Message with tracking id: {order.TrackingId} received at {order.MessageReceivedTime} is assigned to: {order.ReviewAssignedTo}: {order.MessageDetails}");
+                sb.AppendLine($"Message with tracking id: {HttpUtility.HtmlEncode(order.TrackingId)} received at {HttpUtility.HtmlEncode(order.MessageReceivedTime)} is assigned to: {HttpUtility.HtmlEncode(order.ReviewAssignedTo)}: {HttpUtility.HtmlEncode(order.MessageDetails)}");
             }
 
             var mostRecentOrderUpdate = orderResults.FirstOrDefault(order => order.TrackingId == updatedOrder.TrackingId);
             if (mostRecentOrderUpdate != null)
             {
                 sb.AppendLine();
-                sb.AppendLine("Most recent update:");
-                sb.AppendLine($"Message with tracking id: {mostRecentOrderUpdate.TrackingId} received at {mostRecentOrderUpdate.MessageReceivedTime} is assigned to: {mostRecentOrderUpdate.ReviewAssignedTo} : {mostRecentOrderUpdate.MessageDetails}");
+                sb.AppendLine("<h2>Most recent message</h2>");
+                sb.AppendLine($"<span style=\"font - weight:bold\">Tracking id</span>: {HttpUtility.HtmlEncode(mostRecentOrderUpdate.TrackingId)}");
+                sb.AppendLine($"<span style=\"font - weight:bold\">Received at</span>: {HttpUtility.HtmlEncode(mostRecentOrderUpdate.MessageReceivedTime)}");
+                sb.AppendLine($"<span style=\"font - weight:bold\">Assigned to</span>: {HttpUtility.HtmlEncode(mostRecentOrderUpdate.ReviewAssignedTo)}");
+                sb.AppendLine($"<span style=\"font - weight:bold\">Details</span>: {HttpUtility.HtmlEncode(mostRecentOrderUpdate.MessageDetails)}");
             }
 
             return sb.ToString();

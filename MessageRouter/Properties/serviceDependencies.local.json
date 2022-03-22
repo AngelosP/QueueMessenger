@@ -9,15 +9,6 @@
       "type": "appInsights.sdk",
       "connectionId": null
     },
-    "cosmosdb1": {
-      "containerPorts": "8081:8081,10251:10251,10252:10252,10253:10253,10254:10254",
-      "secretStore": "LocalSecretsFile",
-      "containerName": "cosmosdb",
-      "containerImage": "mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator",
-      "resourceId": null,
-      "type": "cosmosdb.container",
-      "connectionId": "CosmosDBConnectionString"
-    },
     "storage1": {
       "secretStore": "LocalSecretsFile",
       "resourceId": null,
@@ -32,6 +23,12 @@
       "resourceId": null,
       "type": "rabbitmq.container",
       "connectionId": "RabbitMQConnectionString"
+    },
+    "cosmosdb1": {
+      "secretStore": "LocalSecretsFile",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.DocumentDB/databaseAccounts/angelpe-orders-cosmosdb",
+      "type": "cosmosdb.azure",
+      "connectionId": "CosmosDBConnectionString"
     },
     "signalr1": {
       "secretStore": "LocalSecretsFile",

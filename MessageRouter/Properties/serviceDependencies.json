@@ -7,10 +7,6 @@
       "type": "appInsights",
       "connectionId": null
     },
-    "cosmosdb1": {
-      "type": "cosmosdb",
-      "connectionId": "CosmosDBConnectionString"
-    },
     "storage1": {
       "type": "storage",
       "connectionId": "AzureWebJobsStorage"
@@ -18,6 +14,10 @@
     "rabbitmq1": {
       "type": "rabbitmq",
       "connectionId": "RabbitMQConnectionString"
+    },
+    "cosmosdb1": {
+      "type": "cosmosdb",
+      "connectionId": "CosmosDBConnectionString"
     },
     "signalr1": {
       "type": "signalr",
